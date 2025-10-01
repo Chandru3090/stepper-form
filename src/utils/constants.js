@@ -106,7 +106,7 @@ export const STEPS = [
       {
         key: "gender",
         label: "Gender",
-        type: "select",
+        type: "radio",
         options: ["Male", "Female", "Other"],
         value: "Male",
         validators: ["required"],
@@ -189,7 +189,7 @@ export const STEPS = [
       {
         key: "hobbies",
         label: "Hobbies",
-        type: "select",
+        type: "checkbox",
         options: ["Reading", "Traveling", "Gaming", "Cooking"],
         value: "Reading",
         validators: [],

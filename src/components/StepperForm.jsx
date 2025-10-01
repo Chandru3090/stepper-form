@@ -150,15 +150,58 @@ export default function StepperForm({
           />
         );
         break; */
+      case "radio":
+        inputElement = field.options.map((option) => (
+          <label key={option} style={{ marginRight: "10px" }}>
+            <input
+              type="radio"
+              name={field.key}
+              value={option}
+              checked={value === option}
+              onChange={(e) => handleChange(field.key, e.target.value)}
+              style={{ marginRight: "5px" }}
+            />
+            {option}
+          </label>
+        ));
+        break;
       case "checkbox":
-        inputElement = (
-          <input
-            type="checkbox"
-            checked={!!value}
-            onChange={(e) => handleChange(field.key, e.target.checked)}
-            style={{ width: "20px" }}
-          />
-        );
+        if (Array.isArray(field.options)) {
+          // Multi-checkbox
+          inputElement = field.options.map((option) => (
+            <label key={option} style={{ marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                name={field.key}
+                value={option}
+                checked={Array.isArray(value) ? value.includes(option) : false}
+                onChange={(e) => {
+                  let newValue = Array.isArray(value) ? [...value] : [];
+                  if (e.target.checked) {
+                    newValue.push(option);
+                  } else {
+                    newValue = newValue.filter((v) => v !== option);
+                  }
+                  handleChange(field.key, newValue);
+                }}
+                style={{ marginRight: "5px" }}
+              />
+              {option}
+            </label>
+          ));
+        } else {
+          // Single checkbox
+          inputElement = (
+            <input
+              type="checkbox"
+              id={field.key}
+              name={field.key}
+              checked={Boolean(value)}
+              onChange={(e) => handleChange(field.key, e.target.checked)}
+              style={{ width: "20px" }}
+            />
+          );
+        }
         break;
       default:
         return null;
@@ -236,9 +279,23 @@ export default function StepperForm({
             {steps[currentStep].fields.map((field) => (
               <div
                 key={field.key}
-                style={fieldWrapper(steps[currentStep].layout)}
+                style={{
+                  ...fieldWrapper(steps[currentStep].layout),
+                  flexDirection: ["radio", "checkbox"].includes(field.type)
+                    ? "row"
+                    : "column",
+                }}
               >
-                <label style={labelStyle}>{field.label}</label>
+                <label
+                  style={{
+                    ...labelStyle,
+                    marginRight: ["radio", "checkbox"].includes(field.type)
+                      ? "10px"
+                      : "0px",
+                  }}
+                >
+                  {field.label}
+                </label>
                 {renderFields(field)}
               </div>
             ))}
