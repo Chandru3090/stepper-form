@@ -50,3 +50,22 @@ A dynamic and reusable multi-step form component built with React. It supports f
     ...
   ]
 }`
+
+# Screenshots
+
+<img width="1917" height="990" alt="image" src="https://github.com/user-attachments/assets/96a979e7-2c5c-4397-911e-2f39a0835939" />
+
+<img width="1917" height="977" alt="image" src="https://github.com/user-attachments/assets/26d2e23d-6e8b-478a-8a6b-a5bf50fd82e6" />
+
+<img width="1918" height="983" alt="image" src="https://github.com/user-attachments/assets/313bec18-11ba-4d9b-b56d-e0d457855525" />
+
+<img width="1911" height="980" alt="image" src="https://github.com/user-attachments/assets/928e48ba-782e-460a-90a5-4e9b14f4abba" />
+
+<img width="1918" height="985" alt="image" src="https://github.com/user-attachments/assets/80078f45-c16d-41fb-b923-7756fb583ee1" />
+
+<img width="1919" height="983" alt="image" src="https://github.com/user-attachments/assets/df17bf0c-6fa0-452b-8f24-e0f180ac7117" />
+
+
+
+
+
